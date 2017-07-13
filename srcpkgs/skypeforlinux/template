@@ -1,0 +1,38 @@
+# Template file for 'skypeforlinux'
+pkgname=skypeforlinux
+version=1.6.2
+revision=1
+only_for_archs="x86_64"
+hostmakedepends="wget rpmextract"
+makedepends="wget rpmextract"
+depends="wget rpmextract"
+short_desc="Skype for linux"
+maintainer="Кузнецов Вячеслав <vyacheslav.kuznetcov@kupivip.ru>"
+license="Skype End User License"
+repository="nonfree"
+homepage="https://www.skype.com"
+_filename=skypeforlinux-64.rpm
+distfiles="https://repo.skype.com/latest/${_filename}"
+wrksrc="skypeforlinux-${version}"
+checksum=6ce0c4f39de94f65c47a56126d9413bef159086f1065c4ba5803ab2540a79c04
+nostrip_files="${pkgname}"
+
+do_fetch() {
+  mkdir -p $wrksrc
+  cd $wrksrc
+  wget \
+    --no-check-certificate \
+    --progress=bar:force \
+    -c -O $_filename \
+    $distfiles
+  echo "$checksum  $_filename" | sha256sum -c || { sha256sum "$_filename"; return 1; }
+}
+
+do_extract() {
+  rpmextract $_filename
+}
+
+do_install() {
+  vbin usr/bin/${pkgname}
+  vcopy usr/share usr
+}
