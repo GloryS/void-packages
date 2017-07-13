@@ -18,21 +18,21 @@ checksum=6ce0c4f39de94f65c47a56126d9413bef159086f1065c4ba5803ab2540a79c04
 nostrip_files="${pkgname}"
 
 do_fetch() {
-  mkdir -p $wrksrc
-  cd $wrksrc
-  wget \
-    --no-check-certificate \
-    --progress=bar:force \
-    -c -O $_filename \
-    $distfiles
-  echo "$checksum  $_filename" | sha256sum -c || { sha256sum "$_filename"; return 1; }
+	mkdir -p $wrksrc
+	cd $wrksrc
+	wget \
+	  --no-check-certificate \
+	  --progress=bar:force \
+	  -c -O $_filename \
+	  $distfiles
+	echo "$checksum  $_filename" | sha256sum -c || { sha256sum "$_filename"; return 1; }
 }
 
 do_extract() {
-  rpmextract $_filename
+	rpmextract $_filename
 }
 
 do_install() {
-  vbin usr/bin/${pkgname}
-  vcopy usr/share usr
+	vbin usr/bin/${pkgname}
+	vcopy usr/share usr
 }
