@@ -1,0 +1,107 @@
+_xbps_src() {
+	local targets cur prev archs pkgs
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	targets='
+		binary-bootstrap
+		bootstrap
+		bootstrap-update
+		build
+		check
+		consistency-check
+		chroot
+		clean
+		configure
+		extract
+		fetch
+		install
+		list
+		pkg
+		remove
+		remove-autodeps
+		purge-distfiles
+		show
+		show-avail
+		show-build-deps
+		show-deps
+		show-files
+		show-options
+		show-shlib-provides
+		show-shlib-requires
+		show-var
+		show-repo-updates
+		show-sys-updates
+		sort-dependencies
+		update-bulk
+		update-sys
+		update-check
+		update-hash-cache
+		zap'
+
+	archs='
+		aarch64-musl
+		aarch64
+		armv5te-musl
+		armv5te
+		armv5tel-musl
+		armv5tel
+		armv6hf-musl
+		armv6hf
+		armv6l-musl
+		armv6l
+		armv7hf-musl
+		armv7hf
+		armv7l-musl
+		armv7l
+		i686-musl
+		i686
+		mips-musl
+		mipsel-musl
+		mipselhf-musl
+		x86_64-musl'
+
+	pkgs=$(compgen -f srcpkgs/ | sed -e 's,srcpkgs/,,')
+
+	case "$prev" in
+		*xbps-src)
+			COMPREPLY=($(compgen -W "${targets}" -- ${cur}))
+			return 0
+			;;
+		binary-bootstrap|-a)
+			COMPREPLY=($(compgen -W "${archs}" -- ${cur}))
+			return 0
+			;;
+		build| \
+		check| \
+		clean| \
+		configure| \
+		extract| \
+		fetch| \
+		install| \
+		pkg| \
+		remove| \
+		show| \
+		show-avail| \
+		show-build-deps| \
+		show-deps| \
+		show-files| \
+		show-options| \
+		show-shlib-provides| \
+		show-shlib-requires| \
+		show-var| \
+		update-check)
+			COMPREPLY=($(compgen -W "${pkgs}" -- ${cur}))
+			return 0
+			;;
+		-H|-m)
+			_filedir
+			return 0
+			;;
+	esac
+
+	return 0
+}
+
+complete -F _xbps_src xbps-src
