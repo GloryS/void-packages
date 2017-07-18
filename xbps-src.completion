@@ -65,7 +65,8 @@ _xbps_src() {
 	pkgs=$(compgen -f srcpkgs/ | sed -e 's,srcpkgs/,,')
 
 	case "$prev" in
-		*xbps-src)
+		*xbps-src| \
+                -[CEfGgILNt]|[0-9])
 			COMPREPLY=($(compgen -W "${targets}" -- ${cur}))
 			return 0
 			;;
