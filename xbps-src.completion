@@ -96,7 +96,7 @@ _xbps_src() {
 			COMPREPLY=($(compgen -W "${pkgs}" -- ${cur}))
 			return 0
 			;;
-		-H|-m)
+		-[Hm])
 			_filedir
 			return 0
 			;;
