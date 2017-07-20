@@ -91,7 +91,6 @@ _xbps_src() {
 		show-options| \
 		show-shlib-provides| \
 		show-shlib-requires| \
-		show-var| \
 		update-check)
 			COMPREPLY=($(compgen -W "${pkgs}" -- ${cur}))
 			return 0
