@@ -1,0 +1,32 @@
+# Template file for 'libdnet'
+pkgname=libdnet
+version=1.12
+revision=1
+wrksrc="${pkgname}-${pkgname}-${version}"
+#create_wrksrc=yes
+#only_for_archs="i686 x86_64"
+build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends="autoconf automake libtool"
+depends=""
+short_desc="Simplified, portable interface to several low-level networking routines."
+maintainer="Viatcheslav E. Kouznetsov <glorysmith@gmail.com>"
+license="BSD"
+homepage="http://libdnet.sourceforge.net/"
+distfiles="https://github.com/dugsong/libdnet/archive/${pkgname}-${version}.tar.gz"
+checksum=b6360659c93fa2e3cde9e0a1fc9c07bc4111f3448c5de856e095eb98315dd424
+#
+#do_extract() {
+#	tar xf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}-${version}.tar.gz \
+#		-C ${wrksrc}/
+#}
+
+do_configure() {
+  autoreconf -i || echo 0
+  ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --libdir=/usr/lib
+}
