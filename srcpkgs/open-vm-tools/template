@@ -1,0 +1,44 @@
+# Template file for 'open-vm-tools'
+pkgname=open-vm-tools
+version=10.1.5
+revision=1
+_build="5055683"
+wrksrc="${pkgname}-${version}-${_build}"
+build_style=gnu-configure
+configure_args="--prefix=/usr --sbindir=/usr/bin --without-xmlsecurity"
+makedepends="
+  autoconf
+  automake
+  libtool
+  libdnet
+  libmspack-devel
+  pkg-config
+  glib-devel
+  pam-devel
+  libressl-devel
+  libxerces-c-devel
+  xmlsec1-devel
+  libXrandr-devel
+  libXinerama-devel
+  libXi-devel
+  libXtst-devel
+  gtk+-devel
+  gtkmm2-devel
+  procps-ng-devel"
+short_desc="open-vm-tools is a set of services and modules that enable several features in VMware products for better management of guests."
+maintainer="Viatcheslav E. Kouznetsov <glorysmith@gmail.com>"
+license="GPL-3"
+homepage="https://github.com/vmware/${pkgname}"
+_filename="${pkgname}-${version}-${_build}.tar.gz"
+distfiles="https://github.com/vmware/${pkgname}/releases/download/stable-${version}/${_filename}"
+checksum=d62fab6c0aeab5dccc96228a5674c1026a732da488fa5f83a396943e2826c17a
+
+do_configure() {
+	autoreconf -i
+	./configure ${configure_args}
+}
+
+post_install() {
+	DESTDIR=`echo ${DESTDIR} | sed -e 's,//,/,'`
+	rm -rf ${DESTDIR}/sbin
+}

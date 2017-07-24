@@ -1,0 +1,19 @@
+error: In the GNU C Library, "major" is defined by <sys/sysmacros.h>.
+For historical compatibility, it is currently defined by <sys/types.h> as well,
+but we plan to remove this soon. To use "major", include <sys/sysmacros.h> directly.
+If you did not intend to use a system-defined macro "major", you should undefine it
+after including <sys/types.h>.
+    int majorN = major(s->st_rdev);
+
+--- lib/wiper/wiperPosix.c
++++ lib/wiper/wiperPosix.c
+@@ -41,7 +41,7 @@
+ # endif /* __FreeBSD_version >= 500000 */
+ #endif
+ #include <unistd.h>
+-
++#include <sys/sysmacros.h>
+ #include "vmware.h"
+ #include "wiper.h"
+ #include "util.h"
+
