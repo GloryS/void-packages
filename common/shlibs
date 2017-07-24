@@ -1183,7 +1183,7 @@ libunwind-arm.so.8 libunwind-1.1_4
 libunwind-mips.so.8 libunwind-1.1_4
 libunwind-aarch64.so.8 libunwind-1.2rc1_1
 libmicrohttpd.so.12 libmicrohttpd-0.9.48_1
-libgit2.so.25 libgit2-0.25.1_1
+libgit2.so.26 libgit2-0.26.0_1
 libgit2-glib-1.0.so.0 libgit2-glib-0.23.4_1
 libagg.so.2 agg-2.5_1
 libzzip-0.so.13 zziplib-0.13.62_1
@@ -1501,10 +1501,10 @@ libdovecot-lda.so.0 dovecot-2.2.11_2
 libnetapi.so.0 samba-3.6.23_1
 libsmbsharemodes.so.0 samba-3.6.23_1
 libmysqld.so.18 libmariadbclient-5.5.36_1
-libwsutil.so.7 libwireshark-2.2.0_1
-libwiretap.so.6 libwireshark-2.2.0_1
-libwireshark.so.8 libwireshark-2.2.0_1
-libwscodecs.so.1 libwireshark-2.2.0_1
+libwsutil.so.8 libwireshark-2.4.0_1
+libwiretap.so.7 libwireshark-2.4.0_1
+libwireshark.so.10 libwireshark-2.4.0_1
+libwscodecs.so.0 libwireshark-2.4.0_1
 libfreerdp-core.so.1.0 libfreerdp-1.0.2_2
 libfreerdp-channels.so.1.0 libfreerdp-1.0.2_2
 libfreerdp-rail.so.1.0 libfreerdp-1.0.2_2
@@ -1611,8 +1611,6 @@ libBulletCollision.so.2.83 bullet-2.83.5_1
 libLinearMath.so.2.83 bullet-2.83.5_1
 libBulletSoftBody.so.2.83 bullet-2.83.5_1
 libinotifytools.so.0 libinotify-tools-3.14_2
-libgmock.so.0 gmock-1.7.0_1
-libgmock_main.so.0 gmock-1.7.0_1
 libopensc.so.4 libopensc-0.16.0_1
 libsmm-local.so.4 libopensc-0.16.0_1
 libSDL2_ttf-2.0.so.0 SDL2_ttf-2.0.12_1
@@ -2820,3 +2818,6 @@ libraqm.so.0 libraqm-0.2.0_1
 libxqilla.so.3 XQilla-2.3.3_1
 libKF5DocTools.so.5 kdoctools-5.36.0_1
 libKF5MediaPlayer.so.5 kmediaplayer-5.36.0_1
+libbrotlicommon.so.0.6.0 brotli-0.6.0_1
+libbrotlidec.so.0.6.0 brotli-0.6.0_1
+libbrotlienc.so.0.6.0 brotli-0.6.0_1
