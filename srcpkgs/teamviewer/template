@@ -1,0 +1,65 @@
+# Template file for 'teamviewer'
+pkgname=teamviewer
+_major_ver=12
+version=${_major_ver}.0.76279
+revision=2
+only_for_archs="i686 x86_64"
+repository="nonfree"
+build_style="fetch"
+nostrip="yes"
+make_dirs="
+  /etc/${pkgname} 0755 root root
+  /var/log/${pkgname}${_major_ver} 0755 root root"
+depends="
+  glibc-32bit
+  libX11-32bit
+  libjpeg-turbo-32bit
+  libpng-32bit
+  libXrandr-32bit
+  libXtst-32bit
+  libXdamage-32bit
+  libgcc-32bit
+  zlib-32bit
+  libXinerama-32bit
+  libXfixes-32bit
+  libSM-32bit
+  dbus-libs-32bit
+  fontconfig-32bit
+  freetype-32bit
+  libpng12-32bit
+"
+short_desc="Remote control and meeting solution."
+maintainer="Viatcheslav E. Kouznetsov <glorysmith@gmail.com>"
+license="TeamViewer® End-User License Agreement"
+homepage="http://www.teamviewer.com"
+distfiles="https://dl.tvcdn.de/download/version_${_major_ver}x/${pkgname}_${version}_i386.deb"
+checksum=0050798ef06b5bb750899fdc35d365520917d64be3b9db460753aefe8de9d097
+
+do_extract() {
+  ar p ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}_i386.deb data.tar.bz2 | tar xjpf - ./
+}
+
+do_install() {
+#---- dirty hack for old libjpeg ----#
+  vmkdir usr/lib32
+  ln -sf /usr/lib32/libjpeg.so.8.1.2 ${DESTDIR}/usr/lib32/libjpeg.so.62
+
+#---- main distr ----#
+  vmkdir opt/${pkgname}
+  vcopy opt/${pkgname} opt/
+
+#---- desktop file ----#
+  vmkdir usr/share/applications
+  ln -sf /opt/${pkgname}/tv_bin/desktop/com.teamviewer.TeamViewer.desktop ${DESTDIR}/usr/share/applications/com.teamviewer.TeamViewer.desktop
+
+#---- icons files ----#
+  vmkdir usr/share/icons/hicolor/48x48/apps
+  ln -sf /opt/${pkgname}/tv_bin/desktop/${pkgname}.png ${DESTDIR}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png
+  ln -sf /opt/${pkgname}/tv_bin/desktop/${pkgname}.png ${DESTDIR}/usr/share/icons/hicolor/48x48/apps/Teamviewer.png
+
+#---- link for binary ----#
+  vmkdir usr/bin
+  ln -sf /opt/${pkgname}/tv_bin/script/${pkgname} ${DESTDIR}/usr/bin/${pkgname}
+
+  vsv ${pkgname}
+}
