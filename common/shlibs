@@ -1486,7 +1486,7 @@ libslim.so.1.3.6 slim-1.3.6_1
 libmozjs-24.so mozjs24-24.2.0_1
 libmediaart-2.0.so.0 libmediaart-1.9.1_1
 libinput.so.10 libinput-1.2.0_1
-libvaladoc.so.0 valadoc-git-20140327_1
+libvaladoc.so.0 valadoc-0.36.0_1
 libuhttpmock-0.0.so.0 uhttpmock-0.2.0_1
 libgfbgraph-0.2.so.0 gfbgraph-0.2.2_1
 libgtkhex-3.so.0 libgtkhex-3.10.0_1
@@ -1611,8 +1611,8 @@ libBulletCollision.so.2.83 bullet-2.83.5_1
 libLinearMath.so.2.83 bullet-2.83.5_1
 libBulletSoftBody.so.2.83 bullet-2.83.5_1
 libinotifytools.so.0 libinotify-tools-3.14_2
-libopensc.so.4 libopensc-0.16.0_1
-libsmm-local.so.4 libopensc-0.16.0_1
+libopensc.so.5 libopensc-0.17.0_1
+libsmm-local.so.5 libopensc-0.17.0_1
 libSDL2_ttf-2.0.so.0 SDL2_ttf-2.0.12_1
 librtlsdr.so.0 librtlsdr-0.5.3_1
 libSDL2_mixer-2.0.so.0 SDL2_mixer-2.0.0_1
@@ -2716,7 +2716,7 @@ libuim-custom.so.2 uim-1.8.6_1
 libgcroots.so.0 uim-1.8.6_1
 libdecoration.so.0 compiz-core-0.8.14_1
 libcompizconfig.so.0 libcompizconfig-0.8.14_1
-libemeraldengine.so.0 emerald-0.8.12.4_1
+libemeraldengine.so.0 emerald-0.8.14_1
 libhangul.so.1 libhangul-0.1.0_1
 libmutter-clutter-1.0.so mutter-3.22.0_1
 libmutter-cogl-pango.so mutter-3.22.0_1
